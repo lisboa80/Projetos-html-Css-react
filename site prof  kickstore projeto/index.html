@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KicksStore | Vitrine de Tênis Exclusivos</title>
+
+  <!-- Fontes e Ícones Externeis -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Estilos Customizados -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- BARRA DE AVISOS -->
+  <div class="top-bar">
+    🔥 FRETE GRÁTIS PARA TODO O BRASIL EM COMPRAS ACIMA DE R$ 299,00
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-shoe-prints"></i> Kicks<span>Store</span>
+      </a>
+
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted)"></i>
+        <input type="text" id="searchInput" placeholder="Buscar tênis, marcas ou modelo..." onkeyup="filtrarProdutos()">
+      </div>
+
+      <div class="header-icons">
+        <button class="icon-btn" title="Minha Conta">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <button class="icon-btn" title="Carrinho">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge">3</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VITRINE / CARROSSEL SLIDER -->
+  <section class="vitrine-section">
+    <div class="carousel-container" id="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide active"
+        style="background-image: url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1200&q=80');">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <span class="carousel-tag">Lançamento Exclusivo</span>
+          <h2>Nike Air Jordan 1 Retro High</h2>
+          <p>O clássico do basquete redefinido com materiais premium e máximo conforto.</p>
+          <a href="https://checkout.exemplo.com/jordan1" target="_blank" class="btn-banner">Garantir o Meu <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide"
+        style="background-image: url('https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1200&q=80');">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <span class="carousel-tag">Oferta Especial</span>
+          <h2>Puma RS-X Bold Edition</h2>
+          <p>Design futurista para quem busca estilo urbano com amortecimento pro.</p>
+          <a href="https://checkout.exemplo.com/pumarsx" target="_blank" class="btn-banner">Comprar Agora <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide"
+        style="background-image: url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=80');">
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <span class="carousel-tag">Alta Performance</span>
+          <h2>Adidas Yeezy Boost 350</h2>
+          <p>A revolução no conforto com tecnologia Primeknit e sola Boost original.</p>
+          <a href="https://checkout.exemplo.com/yeezy350" target="_blank" class="btn-banner">Ver Detalhes <i
+              class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Setas de Navegação -->
+      <div class="carousel-nav">
+        <button class="nav-arrow" onclick="mudarSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="nav-arrow" onclick="mudarSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Indicadores de Pontos -->
+      <div class="carousel-dots">
+        <span class="dot active" onclick="irParaSlide(0)"></span>
+        <span class="dot" onclick="irParaSlide(1)"></span>
+        <span class="dot" onclick="irParaSlide(2)"></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTEÚDO PRINCIPAL (PRODUTOS + MENU LATERAL DIREITO) -->
+  <main class="main-layout">
+
+    <!-- ÁREA DE PRODUTOS (ESQUERDA) -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title" id="titulo-secao">Todos os Tênis</h2>
+      </div>
+
+      <div class="grid-produtos" id="gridProdutos">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+
+    <!-- MENU LATERAL DE MARCAS (DIREITA) -->
+    <aside class="sidebar-marcas">
+      <h3 class="sidebar-title">
+        <i class="fa-solid fa-tags" style="color: var(--accent);"></i> Marcas de Tênis
+      </h3>
+
+      <ul class="lista-marcas">
+        <li class="marca-item active" onclick="filtrarMarca('Todas', this)">
+          <div class="marca-info">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Todas as Marcas</span>
+          </div>
+          <span class="qtd-badge">8</span>
+        </li>
+
+        <li class="marca-item" onclick="filtrarMarca('Nike', this)">
+          <div class="marca-info">
+            <i class="fa-bold fa-n"></i>
+            <span>Nike</span>
+          </div>
+          <span class="qtd-badge">3</span>
+        </li>
+
+        <li class="marca-item" onclick="filtrarMarca('Adidas', this)">
+          <div class="marca-info">
+            <i class="fa-solid fa-lines-leaning"></i>
+            <span>Adidas</span>
+          </div>
+          <span class="qtd-badge">2</span>
+        </li>
+
+        <li class="marca-item" onclick="filtrarMarca('Puma', this)">
+          <div class="marca-info">
+            <i class="fa-solid fa-cat"></i>
+            <span>Puma</span>
+          </div>
+          <span class="qtd-badge">1</span>
+        </li>
+
+        <li class="marca-item" onclick="filtrarMarca('New Balance', this)">
+          <div class="marca-info">
+            <i class="fa-solid fa-n"></i>
+            <span>New Balance</span>
+          </div>
+          <span class="qtd-badge">1</span>
+        </li>
+
+        <li class="marca-item" onclick="filtrarMarca('Asics', this)">
+          <div class="marca-info">
+            <i class="fa-solid fa-running"></i>
+            <span>Asics</span>
+          </div>
+          <span class="qtd-badge">1</span>
+        </li>
+      </ul>
+
+      <!-- PROMOÇÃO NA SIDEBAR -->
+      <div class="sidebar-promo">
+        <h4>Cupom PRIMEIRA10</h4>
+        <p>10% OFF no seu primeiro pedido pelo WhatsApp!</p>
+        <button onclick="abrirWhatsAppIA()">Resgatar Agora</button>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP COM IA -->
+  <div class="whatsapp-widget">
+    <div class="ia-badge">
+      <i class="fa-solid fa-robot"></i> Atendente IA 24h
+    </div>
+    <a href="javascript:void(0)" class="whatsapp-btn" onclick="abrirWhatsAppIA()"
+      title="Conversar com nossa IA no WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>KicksStore</h3>
+        <p>A maior loja de tênis exclusivos e edições limitadas do Brasil. Checkout 100% seguro.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Atendimento</h3>
+        <p><i class="fa-solid fa-headset"></i> Suporte com IA Integrada 24/7</p>
+        <p><i class="fa-solid fa-envelope"></i> contato@kicksstore.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 KicksStore - Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- Scripts JS Separados -->
+  <script src="produtos.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1310 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.75)),
+        url("./img/fundo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+
+    width: 100%;
+    height: 90px;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(5, 5, 5, 0.8);
+
+    backdrop-filter: blur(12px);
+
+    border-bottom:
+        1px solid rgba(255, 123, 0, 0.25);
+}
+
+.logo img {
+
+    width: 95px;
+
+    transition: 0.3s;
+
+    filter:
+        drop-shadow(0 0 8px #ff7b00);
+}
+
+.logo img:hover {
+    transform: scale(1.08);
+}
+
+.cabecalho nav {
+
+    display: flex;
+
+    gap: 35px;
+}
+
+.cabecalho nav a {
+
+    color: #ddd;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.cabecalho nav a:hover {
+    color: #ff7b00;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        120px 8% 60px;
+
+    overflow: hidden;
+}
+
+.hero-texto {
+
+    width: 50%;
+
+    z-index: 5;
+}
+
+.subtitulo {
+
+    color: #ff9d00;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    font-weight: 800;
+}
+
+.hero h1 {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(60px, 8vw, 120px);
+
+    line-height: 0.9;
+
+    font-weight: 900;
+}
+
+.hero h1 span {
+
+    color: #ff7b00;
+
+    text-shadow:
+        0 0 10px #ff7b00,
+        0 0 30px rgba(255, 123, 0, 0.6);
+}
+
+.hero-texto p {
+
+    max-width: 600px;
+
+    margin-top: 30px;
+
+    color: #ddd;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.hero button,
+.contato button {
+
+    margin-top: 35px;
+
+    padding: 16px 30px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    color: white;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(90deg,
+            #ff4d00,
+            #ff9d00);
+
+    box-shadow:
+        0 0 20px rgba(255, 100, 0, 0.3);
+
+    transition: 0.3s;
+}
+
+.hero button:hover,
+.contato button:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 35px rgba(255, 100, 0, 0.7);
+}
+
+
+/* =========================
+   GOKU PRINCIPAL
+========================= */
+
+.hero-personagem {
+
+    width: 50%;
+
+    height: 700px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* GOKU */
+
+.hero-personagem>img {
+
+    width: min(600px, 100%);
+
+    position: relative;
+
+    z-index: 4;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 180, 0, 0.7)) drop-shadow(0 0 35px rgba(255, 100, 0, 0.5));
+
+    animation:
+        personagem 4s ease-in-out infinite;
+}
+
+
+/* =========================
+   FLUTUAÇÃO DO GOKU
+========================= */
+
+@keyframes personagem {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+
+/* =========================
+   AURA
+========================= */
+
+.aura {
+
+    position: absolute;
+
+    width: 420px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(ellipse,
+            rgba(255, 196, 0, 0.35),
+            rgba(255, 120, 0, 0.15),
+            transparent 70%);
+
+    filter: blur(25px);
+
+    z-index: 1;
+
+    animation:
+        aura 1.5s ease-in-out infinite;
+}
+
+@keyframes aura {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform:
+            translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%) scale(1.08);
+    }
+}
+
+
+/* =========================
+   ⚡ RAIOS
+========================= */
+
+.raios {
+
+    position: absolute;
+
+    width: 560px;
+    height: 680px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* CADA RAIO */
+
+.raios span {
+
+    position: absolute;
+
+    width: 5px;
+    height: 150px;
+
+    background: #fff;
+
+    clip-path: polygon(45% 0%,
+            70% 30%,
+            52% 30%,
+            85% 58%,
+            48% 52%,
+            60% 100%,
+            28% 62%,
+            43% 65%,
+            12% 35%,
+            40% 40%);
+
+    box-shadow:
+
+        0 0 5px #fff,
+
+        0 0 12px #ffe600,
+
+        0 0 25px #ff9d00,
+
+        0 0 45px rgba(255, 145, 0, 0.8);
+
+    opacity: 0;
+
+    animation:
+        raio 1.7s infinite;
+}
+
+
+/* RAIO 1 */
+
+.raios span:nth-child(1) {
+
+    left: 12%;
+    top: 18%;
+
+    transform: rotate(-28deg);
+
+    animation-delay:
+        0.1s;
+}
+
+
+/* RAIO 2 */
+
+.raios span:nth-child(2) {
+
+    right: 12%;
+    top: 14%;
+
+    transform: rotate(28deg);
+
+    animation-delay:
+        0.7s;
+}
+
+
+/* RAIO 3 */
+
+.raios span:nth-child(3) {
+
+    left: 5%;
+    top: 48%;
+
+    transform: rotate(-48deg);
+
+    animation-delay:
+        1.2s;
+}
+
+
+/* RAIO 4 */
+
+.raios span:nth-child(4) {
+
+    right: 3%;
+    top: 50%;
+
+    transform: rotate(45deg);
+
+    animation-delay:
+        0.4s;
+}
+
+
+/* RAIO 5 */
+
+.raios span:nth-child(5) {
+
+    left: 27%;
+    top: 5%;
+
+    transform: rotate(-10deg);
+
+    animation-delay:
+        1s;
+}
+
+
+/* RAIO 6 */
+
+.raios span:nth-child(6) {
+
+    right: 28%;
+    top: 8%;
+
+    transform: rotate(12deg);
+
+    animation-delay:
+        1.4s;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes raio {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.4) rotate(-25deg);
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    9% {
+        opacity: 0;
+    }
+
+    14% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.titulo-secao {
+
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+.titulo-secao span {
+
+    color: #ff7b00;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+.titulo-secao h2 {
+
+    margin-top: 12px;
+
+    font-size:
+        clamp(35px, 5vw, 60px);
+}
+
+
+/* =========================
+   PERSONAGENS
+========================= */
+
+.personagens {
+
+    padding:
+        120px 6%;
+
+    background:
+        rgba(5, 5, 5, 0.78);
+}
+
+
+.personagens-lista {
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 15px;
+}
+
+
+.personagem-item {
+
+    width: 25%;
+
+    flex: 1 1 25%;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.personagem-imagem {
+
+    height: 400px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+.personagem-imagem::before {
+
+    content: "";
+
+    width: 220px;
+    height: 220px;
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 20px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(255, 123, 0, 0.35),
+            transparent 70%);
+
+    filter: blur(15px);
+
+    opacity: 0;
+
+    transition: 0.4s;
+}
+
+
+.personagem-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+
+.personagem-item h3 {
+
+    margin-top: 15px;
+
+    color: #ff8c00;
+
+    font-size: 25px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 10px rgba(255, 123, 0, 0.4);
+}
+
+
+.personagem-item span {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #888;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+}
+
+
+.personagem-item:hover {
+
+    transform:
+        translateY(-15px);
+}
+
+.personagem-item:hover .personagem-imagem::before {
+
+    opacity: 1;
+}
+
+.personagem-item:hover img {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 180, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 80, 0, 0.6));
+}
+
+.personagem-item:hover h3 {
+
+    color: #ffd000;
+}
+
+
+/* =========================
+   TRANSFORMAÇÕES
+========================= */
+
+.transformacoes {
+
+    padding:
+        120px 8%;
+
+    background:
+        rgba(5, 5, 5, 0.88);
+}
+
+.lista-transformacoes {
+
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.transformacao {
+
+    display: flex;
+
+    gap: 20px;
+
+    padding: 30px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    transition: 0.3s;
+}
+
+.transformacao:hover {
+
+    border-color:
+        rgba(255, 123, 0, 0.5);
+
+    background:
+        rgba(255, 123, 0, 0.08);
+
+    transform:
+        translateY(-5px);
+}
+
+.numero {
+
+    color: #ff7b00;
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+.transformacao h3 {
+    font-size: 18px;
+}
+
+.transformacao p {
+
+    margin-top: 10px;
+
+    color: #999;
+
+    font-family: Arial, sans-serif;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   CONTATO
+========================= */
+
+.contato {
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.9)),
+        url("./img/fundo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+.contato-conteudo {
+
+    max-width: 700px;
+}
+
+.contato-conteudo>span {
+
+    color: #ff7b00;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+}
+
+.contato h2 {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(35px, 5vw, 60px);
+}
+
+.contato p {
+
+    margin-top: 20px;
+
+    color: #aaa;
+
+    font-family: Arial, sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.formulario {
+
+    width: 400px;
+
+    max-width: 90%;
+
+    position: fixed;
+
+    top: 50%;
+
+    left: -500px;
+
+    transform:
+        translateY(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(145deg,
+            #1c1c1c,
+            #080808);
+
+    border:
+        1px solid rgba(255, 123, 0, 0.5);
+
+    box-shadow:
+        0 0 50px rgba(0, 0, 0, 0.8);
+
+    z-index: 200;
+
+    transition:
+        left 0.5s ease,
+        transform 0.5s ease;
+}
+
+.formulario h2 {
+
+    color: #ff8c00;
+
+    margin-bottom: 10px;
+}
+
+.formulario input,
+.formulario textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    color: white;
+
+    background: #111;
+
+    border:
+        1px solid #333;
+
+    border-radius: 5px;
+
+    outline: none;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+
+    border-color: #ff7b00;
+
+    box-shadow:
+        0 0 10px rgba(255, 123, 0, 0.2);
+}
+
+.formulario textarea {
+
+    height: 120px;
+
+    resize: none;
+}
+
+.formulario>button[type="submit"] {
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    color: white;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(90deg,
+            #ff4d00,
+            #ff9d00);
+}
+
+.fechar-form {
+
+    width: 35px;
+
+    height: 35px;
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 28px;
+}
+
+.fechar-form:hover {
+    color: #ff7b00;
+}
+
+
+/* =========================
+   MÁSCARA
+========================= */
+
+.mascara-formulario {
+
+    width: 100%;
+
+    height: 100%;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 150;
+
+    background:
+        rgba(0, 0, 0, 0.75);
+
+    backdrop-filter:
+        blur(5px);
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.4s,
+        visibility 0.4s;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-personagem {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 300;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 0, 0, 0.8);
+
+    backdrop-filter:
+        blur(8px);
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s,
+        visibility 0.3s;
+}
+
+.modal-conteudo {
+
+    width: 450px;
+
+    max-width: 90%;
+
+    padding: 40px;
+
+    position: relative;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255, 123, 0, 0.5);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(145deg,
+            #1d1d1d,
+            #080808);
+
+    box-shadow:
+        0 0 50px rgba(255, 100, 0, 0.2);
+
+    transform:
+        scale(0.8);
+
+    transition:
+        transform 0.3s;
+}
+
+.modal-conteudo h2 {
+
+    color: #ff8c00;
+
+    font-size: 35px;
+}
+
+.modal-conteudo p {
+
+    margin-top: 20px;
+
+    color: #ccc;
+
+    font-family: Arial, sans-serif;
+
+    line-height: 1.7;
+}
+
+.fechar-modal {
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 30px;
+}
+
+.fechar-modal:hover {
+    color: #ff7b00;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #050505;
+}
+
+footer p {
+
+    color: #666;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        padding: 0 4%;
+    }
+
+    .cabecalho nav {
+        gap: 15px;
+    }
+
+    .cabecalho nav a {
+        font-size: 10px;
+    }
+
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding-top: 120px;
+    }
+
+    .hero-texto {
+        width: 100%;
+    }
+
+    .hero-texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-personagem {
+
+        width: 100%;
+
+        height: 450px;
+    }
+
+
+    .personagens-lista {
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        gap: 5px;
+    }
+
+    .personagem-item {
+
+        width: 25%;
+
+        flex: 1 1 25%;
+    }
+
+    .personagem-imagem {
+        height: 300px;
+    }
+
+    .personagem-item h3 {
+        font-size: 17px;
+    }
+
+    .personagem-item span {
+        font-size: 10px;
+    }
+
+
+    .lista-transformacoes {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .cabecalho {
+        justify-content: center;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .cabecalho nav {
+        gap: 12px;
+    }
+
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+
+    .hero-personagem {
+        height: 350px;
+    }
+
+    .hero-personagem>img {
+        width: 350px;
+    }
+
+
+    .raios {
+        width: 400px;
+        height: 450px;
+    }
+
+
+    .personagens-lista {
+
+        display: grid !important;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 15px;
+    }
+
+    .personagem-item {
+
+        width: 100%;
+
+        flex: none;
+    }
+
+    .personagem-imagem {
+        height: 250px;
+    }
+
+    .personagem-item h3 {
+        font-size: 17px;
+    }
+
+
+    .personagens,
+    .transformacoes {
+        padding:
+            80px 5%;
+    }
+
+
+    .formulario {
+        width: 350px;
+
+        padding: 25px;
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEMENTAL GAME</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Vídeo de Fundo MP4 -->
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="img/video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos em HTML5.
+    </video>
+
+    <div class="container">
+        <h1>⚔️ Pronto para a Batalha?</h1>
+
+        <!-- Placar com Imagens e Raio no meio -->
+        <div class="result">
+            <div class="player-box">
+                <img src="img/jogador.png" alt="Jogador" class="avatar">
+                <p class="your-score">Você: <span id="human-score">0</span></p>
+            </div>
+
+            <!-- Imagem do Raio no meio -->
+            <img src="img/raio.png" alt="VS" class="lightning-icon">
+
+            <div class="player-box">
+                <p class="machine-score">Robô: <span id="machine-score">0</span></p>
+                <img src="img/robo.png" alt="Robô" class="avatar">
+            </div>
+        </div>
+
+        <p id="result-message">Escolha seu elemento para batalhar!</p>
+
+        <div class="buttons">
+            <button id="fogo" onclick="playHuman('fogo')">🔥 Fogo</button>
+            <button id="agua" onclick="playHuman('agua')">💧 Água</button>
+            <button id="planta" onclick="playHuman('planta')">&#127807; Planta</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

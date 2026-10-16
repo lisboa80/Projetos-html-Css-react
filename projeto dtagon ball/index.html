@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dragon Ball Universe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="cabecalho">
+
+        <a href="#inicio" class="logo">
+            <img src="./img/logo.png" alt="Logo Dragon Ball">
+        </a>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#personagens">Personagens</a>
+            <a href="#transformacoes">Transformações</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         INÍCIO
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-texto">
+
+                <span class="subtitulo">
+                    O UNIVERSO DOS SAIYAJINS
+                </span>
+
+                <h1>
+                    DRAGON <span>BALL</span>
+                </h1>
+
+                <p>
+                    Prepare-se para entrar em um universo de batalhas,
+                    poderes incríveis e guerreiros lendários.
+                </p>
+
+                <button type="button" onclick="mostrarForm()">
+
+                    Entrar em contato
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-personagem">
+
+                <!-- RAIOS -->
+
+                <div class="raios">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <!-- AURA -->
+
+                <div class="aura"></div>
+
+
+                <!-- GOKU -->
+
+                <img src="./img/goku.png" alt="Goku">
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERSONAGENS
+        ========================== -->
+
+        <section class="personagens" id="personagens">
+
+            <div class="titulo-secao">
+
+                <span>
+                    GUERREIROS
+                </span>
+
+                <h2>
+                    PERSONAGENS
+                </h2>
+
+            </div>
+
+
+            <div class="personagens-lista">
+
+
+                <!-- GOKU -->
+
+                <div class="personagem-item" onclick="mostrarPersonagem('Goku')">
+
+                    <div class="personagem-imagem">
+
+                        <img src="./img/goku.png" alt="Goku">
+
+                    </div>
+
+                    <h3>
+                        Goku
+                    </h3>
+
+                    <span>
+                        Saiyajin
+                    </span>
+
+                </div>
+
+
+                <!-- VEGETA -->
+
+                <div class="personagem-item" onclick="mostrarPersonagem('Vegeta')">
+
+                    <div class="personagem-imagem">
+
+                        <img src="./img/vegeta.png" alt="Vegeta">
+
+                    </div>
+
+                    <h3>
+                        Vegeta
+                    </h3>
+
+                    <span>
+                        Príncipe Saiyajin
+                    </span>
+
+                </div>
+
+
+                <!-- GOHAN -->
+
+                <div class="personagem-item" onclick="mostrarPersonagem('Gohan')">
+
+                    <div class="personagem-imagem">
+
+                        <img src="./img/gohan.png" alt="Gohan">
+
+                    </div>
+
+                    <h3>
+                        Gohan
+                    </h3>
+
+                    <span>
+                        Meio-Saiyajin
+                    </span>
+
+                </div>
+
+
+                <!-- PICCOLO -->
+
+                <div class="personagem-item" onclick="mostrarPersonagem('Piccolo')">
+
+                    <div class="personagem-imagem">
+
+                        <img src="./img/picolo.png" alt="Piccolo">
+
+                    </div>
+
+                    <h3>
+                        Piccolo
+                    </h3>
+
+                    <span>
+                        Namekuseijin
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRANSFORMAÇÕES
+        ========================== -->
+
+        <section class="transformacoes" id="transformacoes">
+
+            <div class="titulo-secao">
+
+                <span>
+                    POWER UP
+                </span>
+
+                <h2>
+                    TRANSFORMAÇÕES
+                </h2>
+
+            </div>
+
+
+            <div class="lista-transformacoes">
+
+
+                <div class="transformacao">
+
+                    <div class="numero">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Super Saiyajin
+                        </h3>
+
+                        <p>
+                            Uma das transformações mais conhecidas
+                            dos guerreiros Saiyajins.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transformacao">
+
+                    <div class="numero">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Super Saiyajin 2
+                        </h3>
+
+                        <p>
+                            Uma evolução que aumenta drasticamente
+                            o poder do guerreiro.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transformacao">
+
+                    <div class="numero">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Super Saiyajin Blue
+                        </h3>
+
+                        <p>
+                            Uma poderosa transformação que combina
+                            o poder Saiyajin com energia divina.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transformacao">
+
+                    <div class="numero">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Instinto Superior
+                        </h3>
+
+                        <p>
+                            Uma técnica avançada baseada em movimentos
+                            automáticos e reflexos extremos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTATO
+        ========================== -->
+
+        <section class="contato" id="contato">
+
+            <div class="contato-conteudo">
+
+                <span>
+                    ENTRE PARA O UNIVERSO
+                </span>
+
+                <h2>
+                    QUER CONHECER MAIS?
+                </h2>
+
+                <p>
+                    Entre em contato e descubra mais sobre os
+                    guerreiros, sagas e transformações de Dragon Ball.
+                </p>
+
+                <button type="button" onclick="mostrarForm()">
+
+                    Entrar em contato
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FORMULÁRIO
+    ========================== -->
+
+    <form class="formulario" onsubmit="enviarFormulario(event)">
+
+        <button type="button" class="fechar-form" onclick="esconderForm()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            Entre no Universo
+        </h2>
+
+
+        <input type="text" name="nome" placeholder="Seu nome" required>
+
+
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+
+
+        <textarea name="mensagem" placeholder="Digite sua mensagem..." required></textarea>
+
+
+        <button type="submit">
+            Enviar mensagem
+        </button>
+
+    </form>
+
+
+    <!-- MÁSCARA -->
+
+    <div class="mascara-formulario" onclick="esconderForm()">
+    </div>
+
+
+    <!-- =========================
+         MODAL PERSONAGEM
+    ========================== -->
+
+    <div class="modal-personagem">
+
+        <div class="modal-conteudo">
+
+            <button type="button" class="fechar-modal" onclick="fecharPersonagem()">
+
+                ×
+
+            </button>
+
+            <h2 id="nome-personagem"></h2>
+
+            <p id="descricao-personagem"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <p>
+            © 2026 Dragon Ball Universe
+        </p>
+
+    </footer>
+
+
+    <script src="./scripts.js"></script>
+
+</body>
+
+</html>

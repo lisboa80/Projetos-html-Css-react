@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorteio Pro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🎲 Sorteio<span>Pro</span></h1>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#sorteio">Sorteio</a>
+        </nav>
+    </header>
+
+
+    <main id="sorteio">
+
+        <section class="intro">
+
+            <h2>FAÇA SEU SORTEIO</h2>
+
+            <p>
+                Escolha se deseja sortear números ou pessoas.
+            </p>
+
+        </section>
+
+
+        <!-- BOTÕES PARA ESCOLHER O TIPO DE SORTEIO -->
+
+        <div class="tipo-sorteio">
+
+            <button class="tipo ativo" id="botao-numero">
+                🔢 Sortear Número
+            </button>
+
+            <button class="tipo" id="botao-pessoa">
+                👥 Sortear Pessoa
+            </button>
+
+        </div>
+
+
+        <!-- SORTEIO DE NÚMEROS -->
+
+        <section class="opcoes" id="area-numero">
+
+            <div class="campo">
+
+                <label>Número mínimo</label>
+
+                <input type="number" id="numero-minimo" value="1">
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>Número máximo</label>
+
+                <input type="number" id="numero-maximo" value="100">
+
+            </div>
+
+        </section>
+
+
+        <!-- SORTEIO DE PESSOAS -->
+
+        <section class="opcoes escondido" id="area-pessoa">
+
+            <label>Digite os nomes separados por vírgula:</label>
+
+            <textarea id="lista-pessoas" placeholder="Exemplo: João, Maria, Carlos, Ana"></textarea>
+
+
+            <div class="busca">
+
+                <input type="text" id="buscar-pessoa" placeholder="🔎 Buscar pessoa...">
+
+            </div>
+
+
+            <div id="lista-nomes">
+
+            </div>
+
+        </section>
+
+
+        <!-- DADO -->
+
+        <div class="area-dado">
+
+            <div class="dado" id="dado">
+
+                🎲
+
+            </div>
+
+            <p>Clique em realizar sorteio</p>
+
+        </div>
+
+
+        <!-- BOTÃO -->
+
+        <button class="botao-sortear" id="sortear">
+
+            🎉 REALIZAR SORTEIO
+
+        </button>
+
+
+        <!-- RESULTADO -->
+
+        <section class="resultado">
+
+            <h3>RESULTADO</h3>
+
+            <div id="resultado">
+
+                ?
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

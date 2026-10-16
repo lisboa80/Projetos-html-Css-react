@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+
+    /* Configuração da imagem de fundo */
+    background-image: url('img/fundo.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Camada escura com iluminação radial na parte inferior */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(10, 12, 16, 0.88);
+
+    mask-image: radial-gradient(circle at 50% 85%, transparent 15%, black 65%);
+    -webkit-mask-image: radial-gradient(circle at 50% 85%, transparent 15%, black 65%);
+
+    pointer-events: none;
+}
+
+/* Caixa principal do jogo */
+.container {
+    position: relative;
+    z-index: 1;
+
+    background-color: rgba(15, 23, 42, 0.88);
+    border: 2px solid #38bdf8;
+    border-radius: 16px;
+    padding: 30px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+}
+
+/* Título Elemental Game em destaque */
+h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* Estilização da área do Placar com Avatares e Raio */
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 65, 85, 0.8);
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.player-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-box p {
+    margin: 0;
+}
+
+/* Avatares (Jogador e Robô) */
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #38bdf8;
+}
+
+/* Raio Central */
+.lightning-icon {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+/* Mensagem de Resultado com Rostos */
+#result-message {
+    font-size: 15px;
+    margin: 15px 0;
+    min-height: 40px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #38bdf8;
+    color: #0f172a;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #7dd3fc;
+    transform: scale(1.05);
+}
+
+/* Animação do Clique nos Botões */
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+button.clicked {
+    animation: buttonPulse 0.2s ease-in-out;
+}

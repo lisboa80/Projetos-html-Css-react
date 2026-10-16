@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    /* Evita barras de rolagem por conta do vídeo */
+}
+
+/* ==========================================================================
+   1. VÍDEO MP4 EM SEGUNDO PLANO
+   ========================================================================== */
+#bg-video {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    /* Mantém o vídeo atrás de todos os elementos */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    /* Cobre a tela inteira sem distorcer */
+
+    /* DICA: Descomente a linha abaixo se quiser ajustar o brilho direto no vídeo */
+    /* filter: brightness(0.6); */
+    /* Valores menores que 1.0 escurecem, maiores clareiam */
+}
+
+/* ==========================================================================
+   2. CAMADA DE ESCURECIMENTO E SOMBRA (POR CIMA DO VÍDEO)
+   ========================================================================== */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /* Fica entre o vídeo e o card do jogo */
+
+    /* CONTROLE DE CLARIDADE:
+       Altere o valor 0.88 abaixo para ajustar a escuridão:
+       - Para escurecer mais: aumente para 0.92 ou 0.95
+       - Para clarear mais: diminua para 0.50 ou 0.60 */
+    background: rgba(0, 4, 10, 0.88);
+
+    /* Máscara radial que cria o ponto de luz no rodapé */
+    mask-image: radial-gradient(circle at 10% 15%, transparent 15%, black 65%);
+    -webkit-mask-image: radial-gradient(circle at 50% 100%, transparent 15%, black 35%);
+
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   3. CONTAINER PRINCIPAL DO JOGO (CARD)
+   ========================================================================== */
+.container {
+    position: relative;
+    z-index: 1;
+
+    background-color: rgba(15, 23, 42, 0.88);
+    border: 2px solid #38bdf8;
+    border-radius: 16px;
+    padding: 30px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+}
+
+/* Título Elemental Game */
+h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* ==========================================================================
+   4. ESTRUTURA DO PLACAR (AVATARES + RAIO CENTRAL)
+   ========================================================================== */
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 65, 85, 0.8);
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.player-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-box p {
+    margin: 0;
+}
+
+/* Avatares do Jogador e do Robô */
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #38bdf8;
+}
+
+/* Raio Central */
+.lightning-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Mensagem de resultado com as carinhas */
+#result-message {
+    font-size: 15px;
+    margin: 15px 0;
+    min-height: 40px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   5. BOTÕES DE AÇÃO E ANIMAÇÃO
+   ========================================================================== */
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #38bdf8;
+    color: #0f172a;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #7dd3fc;
+    transform: scale(1.05);
+}
+
+/* Animação disparada pelo clique via JavaScript (.clicked) */
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+button.clicked {
+    animation: buttonPulse 0.2s ease-in-out;
+}
