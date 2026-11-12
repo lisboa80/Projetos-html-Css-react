@@ -17,28 +17,22 @@ const currencyImage = document.querySelector('.currency-img')
 
 // ======================================================
 // COTAÇÕES
-// Todos os valores abaixo representam quanto 1 unidade
-// da moeda/ativo vale em Reais.
+// Quanto 1 unidade da moeda/ativo vale em Reais.
+// Os valores abaixo são de reserva e são atualizados pela API.
 // ======================================================
 
 const rates = {
-
     real: 1,
-
     dolar: 5.20,
-
     euro: 6.20,
-
     libra: 7.20,
-
     bitcoin: 500000,
-
     ethereum: 20000,
-
     ouro: 650,
-
     prata: 8
 }
+
+const GRAMS_PER_TROY_OUNCE = 31.1035
 
 
 // ======================================================
@@ -78,29 +72,62 @@ const currencies = {
     bitcoin: {
         name: 'Bitcoin',
         image: './assets/bitcoin.png',
-        locale: 'en-US',
-        currency: 'BTC'
+        symbol: '₿'
     },
 
     ethereum: {
         name: 'Ethereum',
         image: './assets/ethereum.png',
-        locale: 'en-US',
-        currency: 'ETH'
+        symbol: 'Ξ'
     },
 
     ouro: {
         name: 'Ouro (grama)',
-        image: './assets/ouro.png',
-        locale: 'pt-BR',
-        currency: 'BRL'
+        image: './assets/ouro.png'
     },
 
     prata: {
         name: 'Prata (grama)',
-        image: './assets/prata.png',
-        locale: 'pt-BR',
-        currency: 'BRL'
+        image: './assets/prata.png'
+    }
+}
+
+
+// ======================================================
+// BUSCA AS COTAÇÕES NA API
+// ======================================================
+
+async function loadRates() {
+
+    const url = 'https://economia.awesomeapi.com.br/json/last/' +
+        'USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL,ETH-BRL,XAU-BRL,XAG-BRL'
+
+    try {
+
+        const response = await fetch(url)
+
+        if (!response.ok) {
+            throw new Error(`Erro na API: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        rates.dolar = Number(data.USDBRL.bid)
+        rates.euro = Number(data.EURBRL.bid)
+        rates.libra = Number(data.GBPBRL.bid)
+        rates.bitcoin = Number(data.BTCBRL.bid)
+        rates.ethereum = Number(data.ETHBRL.bid)
+
+        // Ouro e prata vêm em onça troy, convertemos para grama
+        rates.ouro = Number(data.XAUBRL.bid) / GRAMS_PER_TROY_OUNCE
+        rates.prata = Number(data.XAGBRL.bid) / GRAMS_PER_TROY_OUNCE
+
+        convertValues()
+
+    } catch (error) {
+
+        console.error('Não foi possível atualizar as cotações:', error)
+        // Mantém os valores de reserva
     }
 }
 
@@ -121,13 +148,13 @@ function formatValue(value, currency) {
     }
 
 
-    // Bitcoin e Ethereum
+    // Bitcoin e Ethereum (símbolo + formato brasileiro)
     if (currency === 'bitcoin' || currency === 'ethereum') {
 
-        return value.toLocaleString('en-US', {
+        return `${currencies[currency].symbol} ${value.toLocaleString('pt-BR', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 8
-        })
+        })}`
     }
 
 
@@ -148,53 +175,23 @@ function formatValue(value, currency) {
 
 function convertValues() {
 
-    const inputValue = Number(inputCurrency.value)
+    // Campo vazio ou inválido vira 0, e valores negativos também
+    const inputValue = Math.max(Number(inputCurrency.value) || 0, 0)
 
     const fromCurrency = fromCurrencySelect.value
     const toCurrency = currencySelect.value
 
 
-    // Verifica se o usuário digitou um número válido
-    if (isNaN(inputValue) || inputValue <= 0) {
-
-        currencyValueToConvert.innerHTML = 'Digite um valor válido'
-
-        currencyValueConverted.innerHTML = '0,00'
-
-        return
-    }
-
-
-    // ==================================================
-    // 1º PASSO
-    // Converte a moeda de origem para Real
-    // ==================================================
-
+    // 1º passo: converte a moeda de origem para Real
     const valueInReal = inputValue * rates[fromCurrency]
 
-
-    // ==================================================
-    // 2º PASSO
-    // Converte o Real para a moeda escolhida
-    // ==================================================
-
+    // 2º passo: converte o Real para a moeda escolhida
     const convertedValue = valueInReal / rates[toCurrency]
 
 
-    // ==================================================
-    // MOSTRA O VALOR DE ORIGEM
-    // ==================================================
+    currencyValueToConvert.textContent = formatValue(inputValue, fromCurrency)
 
-    currencyValueToConvert.innerHTML =
-        formatValue(inputValue, fromCurrency)
-
-
-    // ==================================================
-    // MOSTRA O VALOR CONVERTIDO
-    // ==================================================
-
-    currencyValueConverted.innerHTML =
-        formatValue(convertedValue, toCurrency)
+    currencyValueConverted.textContent = formatValue(convertedValue, toCurrency)
 }
 
 
@@ -204,17 +201,13 @@ function convertValues() {
 
 function changeFromCurrency() {
 
-    const selectedCurrency = fromCurrencySelect.value
+    const currency = currencies[fromCurrencySelect.value]
 
-    const currency = currencies[selectedCurrency]
-
-
-    fromCurrencyName.innerHTML = currency.name
+    fromCurrencyName.textContent = currency.name
 
     fromCurrencyImage.src = currency.image
 
     fromCurrencyImage.alt = `Logo do ${currency.name}`
-
 
     convertValues()
 }
@@ -226,17 +219,13 @@ function changeFromCurrency() {
 
 function changeCurrency() {
 
-    const selectedCurrency = currencySelect.value
+    const currency = currencies[currencySelect.value]
 
-    const currency = currencies[selectedCurrency]
-
-
-    currencyName.innerHTML = currency.name
+    currencyName.textContent = currency.name
 
     currencyImage.src = currency.image
 
     currencyImage.alt = `Logo do ${currency.name}`
-
 
     convertValues()
 }
@@ -246,17 +235,23 @@ function changeCurrency() {
 // EVENTOS
 // ======================================================
 
-fromCurrencySelect.addEventListener(
-    'change',
-    changeFromCurrency
-)
+fromCurrencySelect.addEventListener('change', changeFromCurrency)
 
-currencySelect.addEventListener(
-    'change',
-    changeCurrency
-)
+currencySelect.addEventListener('change', changeCurrency)
 
-convertButton.addEventListener(
-    'click',
-    convertValues
-)
+convertButton.addEventListener('click', convertValues)
+
+// Converte ao apertar Enter no campo de valor
+inputCurrency.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') convertValues()
+})
+
+
+// ======================================================
+// INICIALIZAÇÃO
+// ======================================================
+
+loadRates()
+
+// Atualiza as cotações a cada 60 segundos
+setInterval(loadRates, 60000)
